@@ -1,8 +1,8 @@
 const app = getApp();
+var article = require('../../data/data.js');
 
 Page({
   data:{
-    show:false,
     title:'全部',
     list:''
   },
@@ -37,10 +37,11 @@ Page({
     // })
 
     //模拟请求
+    console.log(article);
     if(!that.data.show){
       setTimeout(() => {
         that.setData({
-          show:true
+          list:article.listData
         });
         wx.hideLoading();
       }, 1000)

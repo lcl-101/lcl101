@@ -6,15 +6,10 @@
     createTimes:createTime
   };
 </wxs>
-<wxs src="../data/data.wxs" module="data" />
 <view class="posts_box">
   <view class="posts_category">{{title}}</view>
-  <!-- <view wx:key="{{list.id}}" wx:for="{{list}}" class="posts_list">
+  <navigator wx:key="{{item.id}}" wx:for="{{list}}" url="/pages/detail/detail?id={{item.id}}" open-type="navigate" class="posts_list">
     <text class="f_left">{{item.title}}</text>
     <text class="r_left">{{m1.createTimes(item.created_at)}}</text>
-  </view> -->
-  <view wx:if="{{show}}" wx:key="{{data.listData.id}}" wx:for="{{data.listData}}" class="posts_list">
-    <text class="f_left">{{item.title}}</text>
-    <text class="r_left">{{m1.createTimes(item.created_at)}}</text>
-  </view>
+  </navigator>
 </view>
