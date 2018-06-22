@@ -4,7 +4,10 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    posts:'全部',
+    about:'归档',
+    project:'PROJECTS',
+    tags:'标签',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')

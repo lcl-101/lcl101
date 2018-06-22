@@ -1,17 +1,14 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <block>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-
-  <view class="btn-area">
-    <navigator url="/pages/logs/logs" open-type="navigate" hover-class="navigator-hover">跳转到新页面</navigator>
+    <view class="usermotto">
+      <navigator url="/pages/posts/posts" class="user_link" open-type="navigate" hover-class="navigator-hover">{{posts}}</navigator>
+      <span class="user_link">{{about}}</span>
+      <span class="user_link">{{tags}}</span>
+    </view>
   </view>
 </view>
