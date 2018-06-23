@@ -2,7 +2,9 @@
 <view class="container">
   <view class="userinfo">
     <block>
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class="userinfo_img">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </view>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
     <view class="usermotto">

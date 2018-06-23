@@ -9,12 +9,19 @@
   flex-direction: column;
   align-items: center;
 }
-
-.userinfo-avatar {
+.userinfo_img {
   width: 240rpx;
   height: 240rpx;
+  font-size: 0;
+  padding: 0;
   margin: 20rpx;
   border-radius: 50%;
+  overflow: hidden;
+}
+.userinfo-avatar {
+  float: left;
+  width: 240rpx;
+  height: 240rpx;
 }
 
 .userinfo-nickname {
