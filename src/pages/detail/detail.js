@@ -1,5 +1,4 @@
 var WxParse = require('../../wxParse/wxParse.js');
-var article = require('../../data/data.js');
 
 Page({
   data:{
@@ -8,17 +7,39 @@ Page({
   },
   onLoad: function(){
     var that = this;
-    console.log(this.options.id);
-    console.log(article);
-    that.setData({
-      listId:this.options.id,
-      listData:article.listData
+    wx.showLoading({
+      title: '加载中',
     });
-    for(var i=0;i<article.listData.length;i++){
-      if(this.options.id == article.listData[i].id){
-          var articles = article.listData[i].body;
-          WxParse.wxParse('article', 'md', articles, that, 5);
+    that.sendQuest(function(res){
+      that.setData({
+        listId:that.options.id,
+        listData:res.data
+      });
+      for(var i=0;i<res.data.length;i++){
+        if(that.options.id == res.data[i].id){
+            var articles = res.data[i].body;
+            WxParse.wxParse('article', 'md', articles, that, 5);
+        }
       }
-    }
+    })
+  },
+  sendQuest: function(callback){
+    var that = this;
+    //涉及到域名问题正式项目
+    wx.request({
+      url:'https://lcl101.cn/api/getList',
+      method:'GET',
+      dataType:'json',
+      success:function(res){
+        wx.hideLoading();
+        if(res.statusCode == 200){
+          if(callback){
+            callback(res);
+          }
+        }else {
+          console.log(res.errMsg)
+        }
+      }
+    })
   }
 })
