@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data:{
     listId:'',
+    loading:true,
     listData:''
   },
   onLoad: function(){
@@ -11,28 +12,35 @@ Page({
       wx.showLoading({
         title: '加载中',
       });
-      that.sendQuest(function(res){
-        that.setData({
-          listId:that.options.id,
-          listData:res.data
-        });
-        for(var i=0;i<res.data.length;i++){
-          if(that.options.id == res.data[i].id){
-              var articles = res.data[i].body;
-              WxParse.wxParse('article', 'md', articles, that, 5);
-          }
-        }
-      })
+      that.getList(that.options.id,res.data);
     }else {
-      that.setData({
-        listId:that.options.id,
-        listData:app.globalData.listDatas
-      });
-      for(var i=0;i<app.globalData.listDatas.length;i++){
-        if(that.options.id == app.globalData.listDatas[i].id){
-            var articles = app.globalData.listDatas[i].body;
-            WxParse.wxParse('article', 'md', articles, that, 5);
-        }
+      that.getList(that.options.id,app.globalData.listDatas);
+    }
+  },
+  onPullDownRefresh: function(){
+    var that = this;
+    that.setData({
+      listData:'',
+      loading:true,
+    });
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.sendQuest(function(res){
+      that.getList(that.options.id,res.data);
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    });
+  },
+  getList: function(id,data){
+    var that = this;
+    that.setData({
+      listId:id,
+      loading:false,
+      listData:data
+    });
+    for(var i=0;i<data.length;i++){
+      if(that.options.id == data[i].id){
+          var articles = data[i].body;
+          WxParse.wxParse('article', 'md', articles, that, 5);
       }
     }
   },

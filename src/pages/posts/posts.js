@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data:{
     title:'全部',
+    loading:true,
     list:''
   },
   onLoad: function(){
@@ -21,7 +22,8 @@ Page({
   onPullDownRefresh: function(){
     var that = this;
     that.setData({
-      list:''
+      list:'',
+      loading:true,
     });
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.sendQuest(function(){
@@ -40,7 +42,8 @@ Page({
         wx.hideLoading();
         if(res.statusCode == 200){
           that.setData({
-            list:res.data
+            list:res.data,
+            loading:false,
           });
           app.globalData.listDatas = res.data;
           if(callback){

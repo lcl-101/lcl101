@@ -24,3 +24,9 @@
   color: #333;
   font-size: 32rpx;
 }
+.detail_load {
+  width: 100%;
+}
+.detail_load .detail_img{
+  width: 100%;
+}
