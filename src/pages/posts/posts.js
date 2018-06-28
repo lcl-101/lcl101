@@ -15,6 +15,7 @@ Page({
       this.sendQuest();
     }else {
       that.setData({
+        loading:false,
         list:app.globalData.listDatas
       });
     }
