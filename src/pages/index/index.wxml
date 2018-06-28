@@ -3,7 +3,7 @@
   <view class="userinfo">
     <block>
       <view class="userinfo_img">
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <image class="userinfo-avatar" src="/images/6ae99450.png" background-size="cover"></image>
       </view>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>

@@ -1,5 +1,5 @@
 var WxParse = require('../../wxParse/wxParse.js');
-
+const app = getApp();
 Page({
   data:{
     listId:'',
@@ -7,21 +7,34 @@ Page({
   },
   onLoad: function(){
     var that = this;
-    wx.showLoading({
-      title: '加载中',
-    });
-    that.sendQuest(function(res){
+    if(!app.globalData.listDatas){
+      wx.showLoading({
+        title: '加载中',
+      });
+      that.sendQuest(function(res){
+        that.setData({
+          listId:that.options.id,
+          listData:res.data
+        });
+        for(var i=0;i<res.data.length;i++){
+          if(that.options.id == res.data[i].id){
+              var articles = res.data[i].body;
+              WxParse.wxParse('article', 'md', articles, that, 5);
+          }
+        }
+      })
+    }else {
       that.setData({
         listId:that.options.id,
-        listData:res.data
+        listData:app.globalData.listDatas
       });
-      for(var i=0;i<res.data.length;i++){
-        if(that.options.id == res.data[i].id){
-            var articles = res.data[i].body;
+      for(var i=0;i<app.globalData.listDatas.length;i++){
+        if(that.options.id == app.globalData.listDatas[i].id){
+            var articles = app.globalData.listDatas[i].body;
             WxParse.wxParse('article', 'md', articles, that, 5);
         }
       }
-    })
+    }
   },
   sendQuest: function(callback){
     var that = this;

@@ -6,10 +6,17 @@ Page({
     list:''
   },
   onLoad: function(){
-    wx.showLoading({
-      title: '加载中',
-    });
-    this.sendQuest();
+    var that = this;
+    if(!app.globalData.listDatas){
+      wx.showLoading({
+        title: '加载中',
+      });
+      this.sendQuest();
+    }else {
+      that.setData({
+        list:app.globalData.listDatas
+      });
+    }
   },
   onPullDownRefresh: function(){
     var that = this;
@@ -35,6 +42,7 @@ Page({
           that.setData({
             list:res.data
           });
+          app.globalData.listDatas = res.data;
           if(callback){
             callback();
           }

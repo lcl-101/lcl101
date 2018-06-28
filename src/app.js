@@ -32,14 +32,13 @@ App({
         }
       }
     })
-    console.log(this)
   },
   onShow: function(options) {
-    console.log(options);
+
     // Do something when show.
   },
   onHide: function() {
-    console.log(123);
+
     // Do something when hide.
   },
   onError: function(msg) {
@@ -47,6 +46,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    listId:''
+    listDatas:''
   }
 })

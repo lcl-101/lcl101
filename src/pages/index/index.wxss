@@ -15,7 +15,6 @@
   font-size: 0;
   padding: 0;
   margin: 20rpx;
-  border-radius: 50%;
   overflow: hidden;
 }
 .userinfo-avatar {
@@ -37,7 +36,7 @@
 .usermotto .user_link {
   display: inline-block;
   margin: 0 7px;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #333333;
 }
 
