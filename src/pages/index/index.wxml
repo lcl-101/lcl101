@@ -9,7 +9,7 @@
     </block>
     <view class="usermotto">
       <navigator url="/pages/posts/posts" class="user_link" open-type="navigate" hover-class="navigator-hover">{{posts}}</navigator>
-      <span class="user_link">{{about}}</span>
+      <navigator url="/pages/archive/archive" class="user_link" open-type="navigate" hover-class="navigator-hover">{{about}}</navigator>
       <navigator url="/pages/label/label" class="user_link" open-type="navigate" hover-class="navigator-hover">{{tags}}</navigator>
     </view>
   </view>
