@@ -10,7 +10,7 @@
     <view class="usermotto">
       <navigator url="/pages/posts/posts" class="user_link" open-type="navigate" hover-class="navigator-hover">{{posts}}</navigator>
       <span class="user_link">{{about}}</span>
-      <span class="user_link">{{tags}}</span>
+      <navigator url="/pages/label/label" class="user_link" open-type="navigate" hover-class="navigator-hover">{{tags}}</navigator>
     </view>
   </view>
 </view>
