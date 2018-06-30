@@ -1,0 +1,4 @@
+<!-- 组件 custom-component.wxml -->
+<footer-component>
+  <view class="footer_box">{{name}}</view>
+</footer-component>

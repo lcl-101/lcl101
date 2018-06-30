@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "个人博客"
+  "navigationBarTitleText": "个人博客",
+  "usingComponents": {
+    "footer-component": "/components/footer-component/footer"
+  }
 }
