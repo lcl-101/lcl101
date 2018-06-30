@@ -5,7 +5,7 @@
       <view class="userinfo_img">
         <image class="userinfo-avatar" src="/images/6ae99450.png" background-size="cover"></image>
       </view>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">{{name}}</text>
     </block>
     <view class="usermotto">
       <navigator url="/pages/posts/posts" class="user_link" open-type="navigate" hover-class="navigator-hover">{{posts}}</navigator>

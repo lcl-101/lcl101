@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    name:'可惜没有如果～R',
     posts:'全部',
     about:'归档',
     project:'PROJECTS',
